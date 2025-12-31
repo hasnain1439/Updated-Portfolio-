@@ -1,60 +1,86 @@
 import React from "react";
-// Make sure to install react-icons: npm install react-icons
-import { LuGithub} from "react-icons/lu";
+// 1. Import motion from framer-motion
+import { motion } from "framer-motion";
+import { LuGithub } from "react-icons/lu";
 import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
-
-// Import your sub-component
-import IconWrapper from "../../components/common/IconWrapper"; 
-// Import your image
-import profileImg from "../../assets/profile.png"; // Adjust path as needed
 import { MdOutlineMailOutline } from "react-icons/md";
+import IconWrapper from "../common/IconWrapper"; 
+import profileImg from "../../assets/profile.png"; 
 
 export default function HeroSection() {
   return (
-    <div className="bg-[#F8FAFC] px-5 sm:px-10 py-10 grid grid-cols-1 lg:grid-cols-[57%_43%] gap-4 items-center">
-      {/* Left Content */}
-      <div className="flex flex-col justify-center gap-4">
-        <h6 className="text-primary font-semibold">Hello, I'm</h6>
-        <h1 className="text-4xl font-semibold">Hasnain Iqbal</h1>
-        <h2 className="text-dark-lighter text-2xl font-semibold">
-          Full Stack Developer || MERN Stack Developer
-        </h2>
-        <p className="text-dark-lighter leading-relaxed">
-          Dedicated MERN Stack Developer passionate about building modern,
-          scalable web applications. Committed to writing clean code and
-          creating exceptional user experiences. Proven ability to deliver
-          robust full-stack solutions, utilizing MongoDB, Express.js, React, and
-          Node.js. Eager to contribute technical skills and problem-solving
-          abilities to a dynamic development team.
-        </p>
+    <section className="bg-[#F8FAFC] py-12 md:py-24 overflow-hidden" id="home">
+      <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12 lg:gap-20">
+        
+        {/* LEFT CONTENT: Animate sliding in from the Left */}
+        <motion.div 
+          className="w-full md:w-1/2 space-y-6 md:space-y-8 flex flex-col justify-center"
+          initial={{ opacity: 0, x: -50 }}      // Start state: invisible and 50px to the left
+          animate={{ opacity: 1, x: 0 }}        // End state: visible and in original position
+          transition={{ duration: 1 }}        // Animation speed: 0.8 seconds
+        >
+          <div>
+            <h6 className="text-primary font-semibold mb-2 text-lg">Hello, I'm</h6>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight">
+              Hasnain Iqbal
+            </h1>
+            <h2 className="text-dark-lighter text-xl md:text-2xl font-semibold mt-3">
+              Full Stack Developer <span className="hidden sm:inline">||</span> <span className="block sm:inline mt-1 sm:mt-0">MERN Stack Developer</span>
+            </h2>
+          </div>
+          
+          <p className="text-dark-lighter leading-relaxed text-lg max-w-xl">
+            Dedicated MERN Stack Developer passionate about building modern,
+            scalable web applications. Committed to writing clean code and
+            creating exceptional user experiences.
+          </p>
 
-        {/* Buttons */}
-        <div className="flex gap-4">
-          <button className="px-4 sm:px-8 py-3 bg-primary text-white font-semibold rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:bg-primary-light hover:shadow-primary/50 hover:-translate-y-1 hover:shadow-xl">
-            View My Work
-          </button>
-          <button className="px-4 sm:px-8 py-3 bg-transparent border-2 border-dark text-dark font-semibold rounded-xl shadow-lg hover:bg-dark hover:shadow-dark-lighter duration-300 hover:text-white hover:shadow-xl">
-            Contact Me
-          </button>
-        </div>
+          {/* BUTTONS: Add hover scales */}
+          <div className="flex flex-wrap gap-4 pt-2">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}        // Scale up slightly on hover
+              whileTap={{ scale: 0.95 }}          // Scale down slightly on click
+              className="px-8 py-3 bg-primary text-white font-semibold rounded-xl shadow-lg shadow-primary/30 transition-colors"
+            >
+              View My Work
+            </motion.button>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-transparent border-2 border-dark text-dark font-semibold rounded-xl shadow-sm hover:bg-dark hover:text-white transition-colors"
+            >
+              Contact Me
+            </motion.button>
+          </div>
 
-        {/* Social Icons */}
-        <div className="flex gap-4 mt-2">
-          <IconWrapper iconName={LuGithub} />
-          <IconWrapper iconName={FaLinkedinIn} />
-          <IconWrapper iconName={MdOutlineMailOutline} />
-          <IconWrapper iconName={FaInstagram} />
-        </div>
+          {/* Social Icons - Staggered Fade In */}
+          <motion.div 
+            className="flex gap-5 mt-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }} // Wait 0.5s before starting
+          >
+            <IconWrapper iconName={LuGithub} />
+            <IconWrapper iconName={FaLinkedinIn} />
+            <IconWrapper iconName={MdOutlineMailOutline} />
+            <IconWrapper iconName={FaInstagram} />
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT IMAGE: Animate sliding in from the Right */}
+        <motion.div 
+          className="w-full md:w-1/2 flex justify-center md:justify-end relative"
+          initial={{ opacity: 0, x: 50 }}       // Start: invisible and 50px to the right
+          animate={{ opacity: 1, x: 0 }}        // End: visible and in place
+          transition={{ duration: 1 }}
+        >
+          <img
+            src={profileImg}
+            className="rounded-2xl border-2 border-white shadow-2xl shadow-primary/20 object-cover w-full max-w-[450px] lg:max-w-[550px] transform hover:scale-[1.02] transition-transform duration-500"
+            alt="Hasnain Iqbal"
+          />
+        </motion.div>
       </div>
-
-      {/* Right Image */}
-      <div className="w-full flex justify-center lg:justify-end">
-        <img
-          src={profileImg}
-          className="rounded-xl border border-gray-border shadow-xl shadow-primary/30 object-cover w-full max-w-md"
-          alt="Hasnain Iqbal"
-        />
-      </div>
-    </div>
+    </section>
   );
 }
