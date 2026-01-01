@@ -1,19 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
-// Import icons (ensure you have react-icons installed)
-import { FaReact, FaNodeJs, FaDatabase, FaGitAlt } from "react-icons/fa";
+// Import icons
+import {
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+  FaGithub,
+  FaBootstrap,
+  FaJs,
+} from "react-icons/fa";
 import {
   SiExpress,
   SiTailwindcss,
   SiMongodb,
   SiTypescript,
+  SiJquery,
+  SiMysql,
 } from "react-icons/si";
 
 import SectionTitle from "../common/SectionTitle";
 import SkillCard from "../common/SkillCard";
 
 export default function SkillsSection() {
-  // Data array for cleaner code
+  // 1. Main Skills (Cards)
   const skills = [
     {
       id: 1,
@@ -59,13 +68,22 @@ export default function SkillsSection() {
     },
   ];
 
-  // Animation variants for Stagger Effect
+  // 2. Additional Skills (Pills below cards)
+  const additionalSkills = [
+    { name: "GitHub", icon: FaGithub },
+    { name: "JavaScript (ES6+)", icon: FaJs },
+    { name: "SQL", icon: SiMysql }, // or FaDatabase
+    { name: "Bootstrap", icon: FaBootstrap },
+    { name: "jQuery", icon: SiJquery },
+  ];
+
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Delay between each card showing up
+        staggerChildren: 0.1,
       },
     },
   };
@@ -80,12 +98,11 @@ export default function SkillsSection() {
       className="bg-[#F8FAFC] py-12 md:py-24 overflow-hidden"
       id="skills"
     >
-      {/* 1. Added Container and Max-Width to match About Section */}
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Title */}
           <motion.div
-            className="mb-12" // Increased bottom margin for better spacing
+            className="mb-12"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -93,17 +110,19 @@ export default function SkillsSection() {
           >
             <SectionTitle title="Technical Skills" />
           </motion.div>
-          <p className="text-center mb-10 text-dark-lighter">
+
+          <p className="text-center mb-10 text-gray-500">
             A comprehensive skill set covering the full MERN stack development
             lifecycle
           </p>
-          {/* Grid Layout */}
+
+          {/* Main Grid Layout */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }} // Starts when 20% of grid is visible
+            viewport={{ once: true, amount: 0.2 }}
           >
             {skills.map((item) => (
               <motion.div key={item.id} variants={cardVariants}>
@@ -116,11 +135,29 @@ export default function SkillsSection() {
               </motion.div>
             ))}
           </motion.div>
-          <div className="text-center mt-10">
-            <p className="text-dark-lighter text-lg ">Also experienced with:</p>
-            <div className="flex justify-center items-center gap-8 mt-5">
-                <div className="px-4 py-2 rounded-2xl bg-white shadow-lg border-[0.2px] border-dark-lighter">github</div>
-            </div>
+
+          {/* Additional Skills Section */}
+          <div className="text-center mt-16">
+            <p className="text-gray-500 text-lg mb-6">Also experienced with:</p>
+
+            <motion.div
+              className="flex flex-wrap justify-center items-center gap-4 md:gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              {additionalSkills.map((item, index) => (
+                <div
+                  key={index}
+                  className="group flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-sm border border-gray-200 font-medium text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:shadow-md transition-all duration-300 cursor-default"
+                >
+                  <item.icon className="text-xl text-gray-400 group-hover:text-blue-600 transition-colors duration-300" />
+
+                  <span>{item.name}</span>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>

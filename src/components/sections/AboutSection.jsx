@@ -6,18 +6,17 @@ import SectionTitle from "../common/SectionTitle";
 export default function AboutProfile() {
   return (
     <section className="py-12 bg-white overflow-hidden" id="about">
+      {/* Title Animation: Fades in and slides up */}
+      <motion.div
+        className="mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }} // Ensures animation only runs once
+        transition={{ duration: 0.6 }}
+      >
+        <SectionTitle title="About Me" />
+      </motion.div>
       <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12 lg:gap-20">
-        {/* Title Animation: Fades in and slides up */}
-        <motion.div
-          className="mb-10"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} // Ensures animation only runs once
-          transition={{ duration: 0.6 }}
-        >
-          <SectionTitle title="About Me" />
-        </motion.div>
-
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12">
           {/* LEFT SIDE: Slide in from Left */}
           <motion.div
