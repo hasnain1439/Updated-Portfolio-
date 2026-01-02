@@ -1,24 +1,30 @@
 import React from "react";
-import { motion } from "framer-motion"; // 1. Import Framer Motion
+import { motion } from "framer-motion";
 import { FaUserGraduate, FaAward, FaDownload } from "react-icons/fa";
 import SectionTitle from "../common/SectionTitle";
+import resume from "../../assets/Doc/resume.pdf"
+
+// DELETE THIS LINE:
+// import resumePDF from "../../assets/Doc/resume_hasnain_iqbal (2) (1).pdf";
 
 export default function AboutProfile() {
   return (
     <section className="py-12 bg-white overflow-hidden" id="about">
-      {/* Title Animation: Fades in and slides up */}
+      {/* Title Animation */}
       <motion.div
         className="mb-10"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }} // Ensures animation only runs once
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
         <SectionTitle title="About Me" />
       </motion.div>
+
       <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12 lg:gap-20">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12">
-          {/* LEFT SIDE: Slide in from Left */}
+          
+          {/* LEFT SIDE */}
           <motion.div
             className="w-full md:w-1/2 space-y-6"
             initial={{ opacity: 0, x: -50 }}
@@ -64,19 +70,29 @@ export default function AboutProfile() {
               ))}
             </div>
 
-            {/* Button Animation: Scale on Hover/Tap */}
+            {/* --- FIXED BUTTON SECTION --- */}
             <div className="pt-4">
-              <motion.button
+              <motion.a
+                // 1. Point to the file in the public folder (start with /)
+                href={resume} 
+                
+                // 2. This forces the browser to just open it nicely
+                target="_blank"
+                rel="noopener noreferrer"
+                
+                // Animation props
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+                className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 cursor-pointer w-fit"
               >
                 <FaDownload /> Download CV
-              </motion.button>
+              </motion.a>
             </div>
+            {/* --------------------------- */}
+
           </motion.div>
 
-          {/* RIGHT SIDE: Slide in from Right */}
+          {/* RIGHT SIDE */}
           <motion.div
             className="w-full md:w-1/2 flex flex-col gap-6"
             initial={{ opacity: 0, x: 50 }}
@@ -86,7 +102,7 @@ export default function AboutProfile() {
           >
             {/* Card 1: Education */}
             <motion.div
-              whileHover={{ y: -5 }} // Smooth hover lift effect using Motion
+              whileHover={{ y: -5 }}
               className="bg-blue-50 p-6 rounded-2xl flex items-start gap-5 border border-blue-100 shadow-sm transition-shadow hover:shadow-md"
             >
               <div className="bg-blue-600 p-3 rounded-xl text-white shadow-lg shadow-blue-200 shrink-0">

@@ -3,6 +3,7 @@ import Experience from "../../components/sections/Experience";
 import HeroSection from "../../components/sections/HeroSection";
 import SkillsSection from "../../components/sections/SkillsSection";
 import Project from "../../components/sections/Project";
+import Footer from "../../components/sections/Footer";
 
 export default function Portfolio() {
     return (
@@ -12,6 +13,7 @@ export default function Portfolio() {
             <SkillsSection/>
             <Experience/>
             <Project/>
+            <Footer/>
         </>
     )
 }
