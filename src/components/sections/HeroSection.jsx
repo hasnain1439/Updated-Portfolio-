@@ -60,13 +60,16 @@ export default function HeroSection() {
               >
                 View My Work
               </motion.button>
-              <motion.button
+              <motion.a
+                href="https://wa.me/923204698158"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 sm:px-8 py-3 bg-transparent border-2 border-dark text-dark font-semibold rounded-xl shadow-sm hover:bg-dark hover:text-white transition-colors"
+                className="px-4 sm:px-8 py-3 bg-transparent border-2 border-dark text-dark font-semibold rounded-xl shadow-sm hover:bg-dark hover:text-white transition-colors inline-block cursor-pointer"
               >
                 Contact Me
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Social Icons - Staggered Fade In */}
