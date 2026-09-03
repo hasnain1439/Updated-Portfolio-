@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiSend, FiCheck, FiCopy } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMail, FiPhone, FiMapPin, FiSend, FiCheck, FiCopy, FiAlertCircle } from "react-icons/fi";
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import SectionTitle from "../common/SectionTitle";
 
 export default function ContactSection() {
@@ -12,7 +13,7 @@ export default function ContactSection() {
     subject: "",
     message: "",
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" }); // 'success', 'error', 'info', ''
   const [submitting, setSubmitting] = useState(false);
 
   const emailAddress = "hasnainiqbal7860a@gmail.com";
@@ -25,24 +26,110 @@ export default function ContactSection() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (status.type) {
+      setStatus({ type: "", message: "" });
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setStatus({ type: "", message: "" });
 
-    // Simulate submission / mailto preparation
-    setTimeout(() => {
+    const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    try {
+      // 1. Try EmailJS if configured
+      if (emailjsServiceId && emailjsTemplateId && emailjsPublicKey) {
+        await emailjs.send(
+          emailjsServiceId,
+          emailjsTemplateId,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject || "New Portfolio Inquiry",
+            message: formData.message,
+            to_name: "Hasnain Iqbal",
+            reply_to: formData.email,
+          },
+          emailjsPublicKey
+        );
+
+        setStatus({
+          type: "success",
+          message: "Thank you! Your message has been sent directly to Hasnain's inbox.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setSubmitting(false);
+        return;
+      }
+
+      // 2. Try Web3Forms if configured
+      if (web3formsKey) {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: web3formsKey,
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject || `New Portfolio Message from ${formData.name}`,
+            message: formData.message,
+            from_name: "Portfolio Contact Form",
+          }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          setStatus({
+            type: "success",
+            message: "Thank you! Your message has been received and sent to Hasnain's inbox.",
+          });
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          setSubmitting(false);
+          return;
+        } else {
+          throw new Error(data.message || "Failed to send email");
+        }
+      }
+
+      // 3. Fallback: If no API keys set in .env yet, trigger mailto client & inform user
+      const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
+        formData.subject || "Portfolio Inquiry from " + formData.name
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      
+      window.location.href = mailtoUrl;
+
+      setStatus({
+        type: "info",
+        message: "Opening your default email app to send the message. (Tip: Configure EmailJS or Web3Forms keys in .env for background delivery).",
+      });
       setSubmitting(false);
-      setFormSubmitted(true);
-      // Construct mailto link
+
+    } catch (err) {
+      console.error("Email send error:", err);
+      // Fallback on error
+      setStatus({
+        type: "error",
+        message: "Unable to send automated email right now. Opening your email app as fallback...",
+      });
+
       const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
         formData.subject || "Portfolio Inquiry from " + formData.name
       )}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       window.location.href = mailtoUrl;
-    }, 600);
+      setSubmitting(false);
+    }
   };
 
   const contactCards = [
@@ -259,7 +346,7 @@ export default function ContactSection() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                       </svg>
-                      Preparing Message...
+                      Sending Direct Message...
                     </span>
                   ) : (
                     <>
@@ -269,15 +356,31 @@ export default function ContactSection() {
                   )}
                 </motion.button>
 
-                {formSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-sm text-center"
-                  >
-                    Your message draft was created! Looking forward to connecting.
-                  </motion.div>
-                )}
+                {/* Status Feedback Alerts */}
+                <AnimatePresence>
+                  {status.type && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className={`p-4 rounded-xl text-sm flex items-start gap-3 ${
+                        status.type === "success"
+                          ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+                          : status.type === "error"
+                          ? "bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400"
+                          : "bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400"
+                      }`}
+                    >
+                      {status.type === "success" ? (
+                        <FiCheck className="shrink-0 mt-0.5" size={18} />
+                      ) : (
+                        <FiAlertCircle className="shrink-0 mt-0.5" size={18} />
+                      )}
+                      <span>{status.message}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
               </form>
             </div>
           </motion.div>
