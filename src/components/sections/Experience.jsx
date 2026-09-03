@@ -2,21 +2,23 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
 import { BsCalendarDate } from "react-icons/bs";
-import SectionTitle from "../common/SectionTitle"; // Assuming you have this from previous code
+import { FiCheckCircle } from "react-icons/fi";
+import SectionTitle from "../common/SectionTitle";
 
 export default function ExperienceSection() {
-  // 1. EDIT THIS ARRAY: Add your 3 experiences here
   const experiences = [
     {
       id: 1,
       role: "Frontend Developer Intern (React)",
       company: "Senew Tech",
       date: "29 July – 29 November",
+      badge: "Internship",
+      tech: ["React.js", "JavaScript", "Tailwind CSS", "REST APIs", "Git"],
       description: [
-        "Learned React fundamentals including components, props, state, and hooks.",
-        "Developed small to medium-scale projects using React and modern JavaScript.",
-        "Built reusable UI components and followed best practices for clean code.",
-        "Improved problem-solving skills by working on real-world frontend tasks.",
+        "Mastered React core concepts including reusable components, props drilling resolution, custom hooks, and state management.",
+        "Built and maintained responsive frontend modules for client projects with an emphasis on speed and clean code architecture.",
+        "Collaborated with senior engineers to implement UI components and conduct code reviews.",
+        "Enhanced problem-solving abilities by addressing real-world frontend layout and performance challenges.",
       ],
     },
     {
@@ -24,11 +26,13 @@ export default function ExperienceSection() {
       role: "Frontend Developer",
       company: "Evonicsoft",
       date: "1 January – 1 April",
+      badge: "Contract / Project",
+      tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive Design"],
       description: [
-        "Worked as a Frontend Developer building real-world projects using HTML, CSS, JavaScript, and Bootstrap.",
-        "Converted design requirements into responsive and user-friendly web interfaces.",
-        "Implemented reusable components and optimized UI for different screen sizes.",
-        "Collaborated with team members to deliver projects on time.",
+        "Developed cross-browser compatible and mobile-first web interfaces following pixel-perfect design specifications.",
+        "Transformed wireframes and prototypes into performant HTML, CSS, and vanilla JavaScript layouts.",
+        "Optimized website load times and asset delivery across mobile and desktop devices.",
+        "Worked in an agile setting to deliver client deliverables on time with high client satisfaction.",
       ],
     },
     {
@@ -36,96 +40,105 @@ export default function ExperienceSection() {
       role: "Web Development Intern",
       company: "Stack Mind",
       date: "18 July – 18 October",
+      badge: "Internship",
+      tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "Web Basics"],
       description: [
-        "Learned and practiced core web technologies including HTML, CSS, JavaScript, and Bootstrap.",
-        "Developed responsive web pages and basic UI components.",
-        "Gained hands-on experience in frontend development fundamentals.",
-        "Improved understanding of layouts, forms, and reusable components.",
+        "Built foundational web pages using modern HTML5, CSS3, JavaScript, and Bootstrap framework.",
+        "Constructed interactive forms with client-side validation and responsive navigation bars.",
+        "Gained hands-on experience in layout structures, styling nuances, and DOM manipulation fundamentals.",
+        "Strengthened understanding of web standards, responsive breakpoints, and web debugging.",
       ],
     },
   ];
 
   return (
     <section
-      className="py-12 md:py-24 bg-white overflow-hidden"
+      className="py-20 md:py-28 bg-white dark:bg-[#0E1322] transition-colors relative overflow-hidden"
       id="experience"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Title */}
-          <motion.div
-            className="mb-12 md:mb-16"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <SectionTitle title="Professional Experience" />
-          </motion.div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionTitle subtitle="Career Journey" title="Work Experience & Growth" />
+        </motion.div>
 
-          {/* Timeline Container */}
-          <div className="flex flex-col gap-12">
+        {/* Timeline List */}
+        <div className="max-w-4xl mx-auto relative mt-12">
+          {/* Vertical Glowing Line */}
+          <div className="hidden md:block absolute left-8 top-6 bottom-6 w-0.5 bg-gradient-to-b from-primary via-accent-purple to-slate-200 dark:to-slate-800" />
+
+          <div className="space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.id}
-                className="flex flex-col md:flex-row gap-6 md:gap-10"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="relative flex flex-col md:flex-row gap-6 md:gap-8 items-start"
               >
-                {/* --- LEFT SIDE: Icon & Line --- */}
-                <div className="flex flex-row md:flex-col items-center md:items-center gap-4 md:gap-0 shrink-0 relative">
-                  {/* The Blue Icon Box */}
-                  <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200 z-10">
+                {/* Timeline Icon Node */}
+                <div className="shrink-0 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-primary-dark text-white flex items-center justify-center shadow-lg shadow-primary/30 z-10">
                     <FaBriefcase size={22} />
                   </div>
-
-                  {/* The Vertical Line (Draws only if it's NOT the last item) */}
-                  {index !== experiences.length - 1 && (
-                    <div className="hidden md:block w-1 bg-blue-100 absolute top-14 bottom-[-48px] -z-0 rounded-b-full"></div>
-                  )}
-
-                  {/* Mobile Date (Visible only on small screens next to icon) */}
-                  <span className="md:hidden font-semibold text-gray-500">
-                    {exp.date}
-                  </span>
                 </div>
 
-                {/* --- RIGHT SIDE: Content Card --- */}
-                <div className="w-full">
-                  <div className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow duration-300 relative">
-                    {/* Card Header */}
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+                {/* Content Card */}
+                <div className="flex-1 w-full bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-primary/40 dark:hover:border-primary/40 transition-all duration-300">
+                  
+                  {/* Card Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                    <div>
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <h3 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white">
                           {exp.role}
                         </h3>
-                        <p className="text-blue-600 font-semibold text-lg">
-                          {exp.company}
-                        </p>
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary-light border border-primary/20">
+                          {exp.badge}
+                        </span>
                       </div>
-
-                      {/* Desktop Date Badge */}
-                      <div className="hidden md:flex items-center gap-2 text-gray-500 bg-white px-3 py-1 rounded-lg border border-gray-200 shadow-sm">
-                        <BsCalendarDate />
-                        <span className="text-sm font-medium">{exp.date}</span>
-                      </div>
+                      <p className="text-primary dark:text-primary-light font-semibold text-base mt-1">
+                        {exp.company}
+                      </p>
                     </div>
 
-                    {/* Bullet Points */}
-                    <ul className="space-y-3">
-                      {exp.description.map((item, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-3 text-gray-600 leading-relaxed"
-                        >
-                          <span className="mt-2 w-1.5 h-1.5 bg-blue-400 rounded-full shrink-0"></span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Date Badge */}
+                    <div className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold shadow-sm w-fit">
+                      <BsCalendarDate className="text-primary" />
+                      <span>{exp.date}</span>
+                    </div>
                   </div>
+
+                  {/* Bullet Points */}
+                  <ul className="space-y-2.5 mb-6">
+                    {exp.description.map((point, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed"
+                      >
+                        <FiCheckCircle className="text-secondary shrink-0 mt-1" size={16} />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Technologies Used Pills */}
+                  <div className="pt-4 border-t border-slate-200/70 dark:border-slate-800 flex flex-wrap gap-2">
+                    {exp.tech.map((t, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-2xs"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
                 </div>
               </motion.div>
             ))}

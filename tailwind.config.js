@@ -1,45 +1,63 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        heading: ['Outfit', 'sans-serif'],
+      },
       colors: {
-        // The main Royal Blue used for buttons, icons, and headings
         primary: {
-          DEFAULT: '#2563EB', // Royal Blue (Hero Button, "About Me" underline)
-          dark: '#1D4ED8',    // Deep Blue (Hover states, Gradient End)
-          light: '#3B82F6',   // Bright Blue (Icons, Gradient Start)
+          DEFAULT: '#3B82F6', // Vibrant Blue
+          dark: '#1D4ED8',
+          light: '#60A5FA',
+          glow: 'rgba(59, 130, 246, 0.4)',
         },
-        // The Emerald Green used for Node.js/MongoDB cards
         secondary: {
-          DEFAULT: '#22C55E', // Emerald Green (Icons)
-          light: '#4ADE80',   // Lighter Green (Accents)
+          DEFAULT: '#10B981', // Emerald Green
+          dark: '#047857',
+          light: '#34D399',
         },
-        // Dark colors for text and backgrounds
+        accent: {
+          purple: '#8B5CF6',
+          cyan: '#06B6D4',
+        },
         dark: {
-          DEFAULT: '#1F2937', // Dark Slate (Section Headings)
-          lighter: '#374151', // Medium Dark (Card Headings)
-          footer: '#111827',  // Very Dark Blue/Gray (Footer Background)
+          DEFAULT: '#0B0F19', // Very deep slate/navy
+          card: '#111827',
+          cardBorder: '#1F2937',
+          lighter: '#1E293B',
+          text: '#F8FAFC',
+          muted: '#94A3B8',
         },
-        // Gray scales for body text and borders
-        gray: {
-          body: '#6B7280',    // Cool Gray (Paragraph text)
-          border: '#E5E7EB',  // Light Gray (Borders)
-          bg: '#F9FAFB',     // Off-White (Page Background)
-        },
-        // Background colors for the glass/light cards
-        surface: {
-          blue: '#EFF6FF',    // Pale Blue (React/TS Card Bg)
-          green: '#F0FDF4',   // Pale Green (Node/Mongo Card Bg)
-          white: '#FFFFFF',   // Pure White
+        light: {
+          DEFAULT: '#FFFFFF',
+          bg: '#F8FAFC',
+          card: '#FFFFFF',
+          cardBorder: '#E2E8F0',
+          text: '#0F172A',
+          muted: '#64748B',
         }
       },
-      // You can also extend backgroundImage if you want a custom name for that Project Card gradient
       backgroundImage: {
-        'project-gradient': 'linear-gradient(to bottom right, #3B82F6, #1E3A8A)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)',
+        'card-glow': 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
+      },
+      animation: {
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        }
       }
     },
   },
