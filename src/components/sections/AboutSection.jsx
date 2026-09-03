@@ -1,145 +1,188 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaUserGraduate, FaAward, FaDownload } from "react-icons/fa";
+import { FaUserGraduate, FaAward, FaDownload, FaCode, FaRocket } from "react-icons/fa";
+import { FiExternalLink, FiSend } from "react-icons/fi";
 import SectionTitle from "../common/SectionTitle";
-import resume from "../../assets/Doc/resume.pdf"
+import resume from "../../assets/Doc/resume.pdf";
 
-// DELETE THIS LINE:
-// import resumePDF from "../../assets/Doc/resume_hasnain_iqbal (2) (1).pdf";
+export default function AboutSection() {
+  const techStack = [
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "Tailwind CSS",
+    "RESTful APIs",
+    "Git & GitHub",
+  ];
 
-export default function AboutProfile() {
   return (
-    <section className="py-12 bg-white overflow-hidden" id="about">
-      {/* Title Animation */}
-      <motion.div
-        className="mb-10"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <SectionTitle title="About Me" />
-      </motion.div>
+    <section className="py-20 md:py-28 bg-white dark:bg-[#0E1322] transition-colors relative overflow-hidden" id="about">
+      {/* Background Subtle Gradient */}
+      <div className="absolute -top-40 right-0 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12 lg:gap-20">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionTitle subtitle="About Me" title="Passion for Code & Problem Solving" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
           
-          {/* LEFT SIDE */}
+          {/* Left Column: Narrative & Stack */}
           <motion.div
-            className="w-full md:w-1/2 space-y-6"
-            initial={{ opacity: 0, x: -50 }}
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-              Building Scalable{" "}
-              <span className="text-blue-600">Web Solutions</span>
-            </h2>
+            <div className="space-y-4">
+              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-slate-800 dark:text-white">
+                Architecting Modern Web Solutions with the <span className="text-primary">MERN Stack</span>
+              </h3>
+              
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
+                I am Hasnain Iqbal, a dedicated <strong>MERN Stack Developer</strong> focused on transforming complex requirements into reliable, responsive digital products. With hands-on frontend & backend development experience across internships at Senew Tech and Evonicsoft, I build applications with high performance, clean structure, and seamless usability.
+              </p>
 
-            <p className="text-gray-600 leading-relaxed text-lg">
-              I am Hasnain Iqbal, a <strong>MERN Stack Developer</strong>{" "}
-              focused on transforming complex requirements into seamless digital
-              products. With professional internship experience at Senew Tech, I
-              have moved beyond basic coding to{" "}
-              <strong>architecting full-stack applications</strong>.
-            </p>
-
-            <p className="text-gray-600 leading-relaxed text-lg">
-              Currently, I am finalizing a comprehensive{" "}
-              <strong>Learning Management System (LMS)</strong>, handling
-              everything from secure Node.js authentication to dynamic React
-              interfaces.
-            </p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
+                I specialize in developing complete full-stack web solutions—from designing optimized MongoDB schemas and robust Node.js REST APIs with secure authentication, to crafting interactive, state-driven React interfaces with Tailwind CSS.
+              </p>
+            </div>
 
             {/* Tech Stack Badges */}
-            <div className="flex flex-wrap gap-2 pt-2">
-              {[
-                "React.js",
-                "Node.js",
-                "Express",
-                "MongoDB",
-                "Tailwind CSS",
-              ].map((tech, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold border border-blue-100"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="pt-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
+                Core Technologies & Tools
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-medium text-xs sm:text-sm border border-slate-200 dark:border-slate-700 hover:border-primary/50 hover:text-primary dark:hover:text-primary-light transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            {/* --- FIXED BUTTON SECTION --- */}
-            <div className="pt-4">
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-4 pt-4">
               <motion.a
-                // 1. Point to the file in the public folder (start with /)
-                href={resume} 
-                
-                // 2. This forces the browser to just open it nicely
+                href={resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                
-                // Animation props
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 cursor-pointer w-fit"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-primary/25 transition-all cursor-pointer"
               >
-                <FaDownload /> Download CV
+                <FaDownload size={15} />
+                <span>Download Resume</span>
+              </motion.a>
+
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-3.5 rounded-xl font-semibold border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all cursor-pointer"
+              >
+                <FiSend size={15} />
+                <span>Contact Me</span>
               </motion.a>
             </div>
-            {/* --------------------------- */}
-
           </motion.div>
 
-          {/* RIGHT SIDE */}
+          {/* Right Column: Experience Cards & Academic Credentials */}
           <motion.div
-            className="w-full md:w-1/2 flex flex-col gap-6"
-            initial={{ opacity: 0, x: 50 }}
+            className="lg:col-span-5 flex flex-col gap-5"
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
             {/* Card 1: Education */}
             <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-blue-50 p-6 rounded-2xl flex items-start gap-5 border border-blue-100 shadow-sm transition-shadow hover:shadow-md"
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
             >
-              <div className="bg-blue-600 p-3 rounded-xl text-white shadow-lg shadow-blue-200 shrink-0">
-                <FaUserGraduate size={24} />
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary dark:text-primary-light flex items-center justify-center shrink-0 text-xl shadow-inner">
+                <FaUserGraduate />
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-800">
-                  Bachelor's Degree
-                </h3>
-                <p className="text-blue-700 font-medium">Computer Science</p>
-                <div className="mt-2 inline-flex items-center gap-2 bg-white px-3 py-1 rounded-md text-sm text-gray-600 shadow-sm">
-                  <span>📅</span>
-                  <span className="font-medium">Jan 2026</span>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
+                    Bachelor's Degree
+                  </h4>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                    Graduation 2026
+                  </span>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Card 2: Performance */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-slate-50 p-6 rounded-2xl flex items-start gap-5 border border-slate-100 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <div className="bg-slate-700 p-3 rounded-xl text-white shadow-lg shadow-slate-200 shrink-0">
-                <FaAward size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-800">
-                  Academic Performance
-                </h3>
-                <p className="text-slate-700 font-medium">CGPA: 3.43 / 4.00</p>
-                <p className="text-gray-500 text-sm mt-2 leading-snug">
-                  Consistent excellence in Data Structures, Algorithms, and Web
-                  Engineering.
+                <p className="text-primary dark:text-primary-light font-medium text-sm mt-0.5">
+                  Computer Science (BSCS)
+                </p>
+                <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
+                  Focusing on Web Technologies, Software Architecture, and Distributed Systems.
                 </p>
               </div>
             </motion.div>
+
+            {/* Card 2: Academic Performance */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary dark:text-secondary-light flex items-center justify-center shrink-0 text-xl shadow-inner">
+                <FaAward />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
+                    Academic Standing
+                  </h4>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
+                    CGPA 3.43 / 4.0
+                  </span>
+                </div>
+                <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mt-0.5">
+                  Consistently Strong Performance
+                </p>
+                <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
+                  Strong grasp of Data Structures, Object Oriented Programming, and Database Management.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 3: Engineering Philosophy */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-accent-purple/10 text-accent-purple flex items-center justify-center shrink-0 text-xl shadow-inner">
+                <FaRocket />
+              </div>
+              <div className="flex-1">
+                <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
+                  Continuous Growth & Quality
+                </h4>
+                <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mt-0.5">
+                  Modern Clean Code Standards
+                </p>
+                <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
+                  Writing maintainable, well-documented code with an emphasis on performance and responsiveness.
+                </p>
+              </div>
+            </motion.div>
+
           </motion.div>
+
         </div>
       </div>
     </section>
