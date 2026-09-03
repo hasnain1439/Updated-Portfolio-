@@ -8,6 +8,7 @@ import resume from "../../assets/Doc/resume.pdf";
 export default function AboutSection() {
   const techStack = [
     "React.js",
+    "React Native",
     "Node.js",
     "Express.js",
     "MongoDB",
@@ -49,7 +50,7 @@ export default function AboutSection() {
               </h3>
               
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I am Hasnain Iqbal, a dedicated <strong>MERN Stack Developer</strong> focused on transforming complex requirements into reliable, responsive digital products. With hands-on frontend & backend development experience across internships at Senew Tech and Evonicsoft, I build applications with high performance, clean structure, and seamless usability.
+                I am Hasnain Iqbal, a dedicated <strong>MERN Stack & React Native Developer</strong> focused on transforming complex requirements into reliable, responsive digital products. Currently working at <strong>Mcode Technology</strong> as a <strong>React & React Native Developer</strong> and building on professional internship experience at <strong>Senew Tech</strong>, I build applications with high performance, clean structure, and seamless usability.
               </p>
 
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">

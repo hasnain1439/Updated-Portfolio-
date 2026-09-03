@@ -45,6 +45,16 @@ export default function SkillsSection() {
       level: "Proficient",
     },
     {
+      id: 13,
+      category: "frontend",
+      skill: "React Native",
+      description: "Developing cross-platform native mobile applications for iOS & Android with custom components and smooth navigation.",
+      icon: FaReact,
+      iconColor: "text-sky-400",
+      iconBg: "bg-sky-400/10",
+      level: "Proficient",
+    },
+    {
       id: 2,
       category: "backend",
       skill: "Node.js",

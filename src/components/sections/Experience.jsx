@@ -9,6 +9,20 @@ export default function ExperienceSection() {
   const experiences = [
     {
       id: 1,
+      role: "React & React Native Developer",
+      company: "Mcode Technology",
+      date: "2 Feb 2026 – Present",
+      badge: "Current / Full-Time",
+      tech: ["React.js", "React Native", "JavaScript", "TypeScript", "Redux Toolkit", "REST APIs", "Tailwind CSS"],
+      description: [
+        "Working as a React & React Native Developer building high-performance cross-platform mobile applications (iOS & Android) and dynamic web interfaces.",
+        "Developing modular, reusable components and managing scalable global application state using Redux Toolkit and modern custom hooks.",
+        "Integrating secure RESTful APIs, authentication workflows, local data persistence, and seamless navigation stacks.",
+        "Collaborating in agile team sprints to design, implement, and deploy responsive and intuitive user experiences.",
+      ],
+    },
+    {
+      id: 2,
       role: "Frontend Developer Intern (React)",
       company: "Senew Tech",
       date: "29 July – 29 November",
@@ -19,20 +33,6 @@ export default function ExperienceSection() {
         "Built and maintained responsive frontend modules for client projects with an emphasis on speed and clean code architecture.",
         "Collaborated with senior engineers to implement UI components and conduct code reviews.",
         "Enhanced problem-solving abilities by addressing real-world frontend layout and performance challenges.",
-      ],
-    },
-    {
-      id: 2,
-      role: "Frontend Developer",
-      company: "Evonicsoft",
-      date: "1 January – 1 April",
-      badge: "Contract / Project",
-      tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive Design"],
-      description: [
-        "Developed cross-browser compatible and mobile-first web interfaces following pixel-perfect design specifications.",
-        "Transformed wireframes and prototypes into performant HTML, CSS, and vanilla JavaScript layouts.",
-        "Optimized website load times and asset delivery across mobile and desktop devices.",
-        "Worked in an agile setting to deliver client deliverables on time with high client satisfaction.",
       ],
     },
     {
@@ -83,7 +83,11 @@ export default function ExperienceSection() {
               >
                 {/* Timeline Icon Node */}
                 <div className="shrink-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-primary-dark text-white flex items-center justify-center shadow-lg shadow-primary/30 z-10">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg z-10 ${
+                    exp.badge.includes("Current")
+                      ? "bg-gradient-to-tr from-emerald-500 to-teal-600 shadow-emerald-500/30 ring-4 ring-emerald-500/20"
+                      : "bg-gradient-to-tr from-primary to-primary-dark shadow-primary/30"
+                  }`}>
                     <FaBriefcase size={22} />
                   </div>
                 </div>
@@ -98,7 +102,11 @@ export default function ExperienceSection() {
                         <h3 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white">
                           {exp.role}
                         </h3>
-                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary-light border border-primary/20">
+                        <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
+                          exp.badge.includes("Current")
+                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+                            : "bg-primary/10 text-primary dark:text-primary-light border border-primary/20"
+                        }`}>
                           {exp.badge}
                         </span>
                       </div>
