@@ -67,9 +67,9 @@ export default function HeroSection() {
                 Hasnain <span className="text-gradient-blue">Iqbal</span>
               </h1>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-600 dark:text-slate-300 mt-3 flex items-center flex-wrap gap-2">
-                <span>Full Stack Developer</span>
+                <span>React & React Native Developer</span>
                 <span className="text-primary font-light">|</span>
-                <span className="text-slate-500 dark:text-slate-400 font-medium">MERN Specialist</span>
+                <span className="text-slate-500 dark:text-slate-400 font-medium">MERN Stack</span>
               </h2>
             </div>
 
