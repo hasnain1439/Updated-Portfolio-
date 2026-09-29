@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              MERN Stack Developer dedicated to building scalable web applications, robust APIs, and responsive, interactive user experiences.
+              Full Stack Developer dedicated to building scalable web applications, mobile apps, robust RESTful APIs, and modern database architectures.
             </p>
 
             <div className="pt-2 flex items-center gap-3">
