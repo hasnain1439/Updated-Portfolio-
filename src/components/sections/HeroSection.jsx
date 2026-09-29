@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { LuGithub } from "react-icons/lu";
 import { FaLinkedinIn, FaWhatsapp, FaReact, FaNodeJs } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { SiMongodb, SiExpress } from "react-icons/si";
+import { SiMongodb, SiExpress, SiNextdotjs, SiPostgresql } from "react-icons/si";
 import { FiArrowUpRight, FiDownload, FiCheckCircle } from "react-icons/fi";
 import IconWrapper from "../common/IconWrapper";
 import profileImg from "../../assets/profile.png";
@@ -20,7 +20,7 @@ export default function HeroSection() {
   const stats = [
     { label: "Hands-on Experience", value: "1+ Year" },
     { label: "Completed Projects", value: "8+" },
-    { label: "Technologies Mastered", value: "10+" },
+    { label: "Core Technologies", value: "10+" },
   ];
 
   return (
@@ -54,7 +54,7 @@ export default function HeroSection() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </span>
               <span className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
-                Available for New Projects & Opportunities
+                Full Stack Developer • Available for Opportunities
               </span>
             </motion.div>
 
@@ -67,15 +67,17 @@ export default function HeroSection() {
                 Hasnain <span className="text-gradient-blue">Iqbal</span>
               </h1>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-600 dark:text-slate-300 mt-3 flex items-center flex-wrap gap-2">
-                <span>React & React Native Developer</span>
+                <span>Full Stack Developer</span>
                 <span className="text-primary font-light">|</span>
-                <span className="text-slate-500 dark:text-slate-400 font-medium">MERN Stack</span>
+                <span className="text-slate-500 dark:text-slate-400 font-medium text-lg sm:text-2xl">
+                  React, Next.js, Node.js & React Native
+                </span>
               </h2>
             </div>
 
             {/* Bio Paragraph */}
             <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
-              Passionate about building production-grade web applications with modern architectures, clean code, and seamless user experiences. Experienced in the complete lifecycle from database schema design to responsive UI deployment.
+              Passionate Full Stack Developer specializing in crafting robust web and cross-platform mobile applications. Skilled across frontend architectures (React, Next.js, React Native, Tailwind CSS, Bootstrap) and backend engineering (Node.js, Express, MongoDB, PostgreSQL, REST APIs & JWT Auth).
             </p>
 
             {/* Call to Actions */}
@@ -177,33 +179,33 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Floating Badge 1: React (Top Left) */}
+              {/* Floating Badge 1: Next.js & React (Top Left) */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute -top-4 -left-4 sm:-left-6 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl flex items-center gap-2"
+                className="absolute -top-4 -left-4 sm:-left-6 px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl flex items-center gap-2"
               >
                 <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
                   <FaReact size={20} className="animate-spin-slow" />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] text-slate-400 font-medium">Frontend</p>
-                  <p className="text-xs font-bold text-slate-800 dark:text-white">React.js</p>
+                  <p className="text-[10px] text-slate-400 font-medium">Frontend & SSR</p>
+                  <p className="text-xs font-bold text-slate-800 dark:text-white">React & Next.js</p>
                 </div>
               </motion.div>
 
-              {/* Floating Badge 2: Node.js / Mongo (Bottom Right) */}
+              {/* Floating Badge 2: Node.js / PostgreSQL / MongoDB (Bottom Right) */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 1 }}
                 className="absolute -bottom-4 -right-4 sm:-right-6 px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl flex items-center gap-2.5"
               >
                 <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
-                  <SiMongodb size={20} />
+                  <FaNodeJs size={20} />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] text-slate-400 font-medium">Database & API</p>
-                  <p className="text-xs font-bold text-slate-800 dark:text-white">MERN Stack</p>
+                  <p className="text-[10px] text-slate-400 font-medium">Backend & DB</p>
+                  <p className="text-xs font-bold text-slate-800 dark:text-white">Node, Mongo & Postgres</p>
                 </div>
               </motion.div>
 
@@ -214,7 +216,7 @@ export default function HeroSection() {
                 className="absolute top-6 -right-3 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-[11px] font-bold shadow-lg flex items-center gap-1.5"
               >
                 <FiCheckCircle size={13} />
-                <span>Verified</span>
+                <span>Full Stack</span>
               </motion.div>
             </div>
           </motion.div>

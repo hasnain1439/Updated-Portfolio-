@@ -8,13 +8,16 @@ import resume from "../../assets/Doc/resume.pdf";
 export default function AboutSection() {
   const techStack = [
     "React.js",
+    "Next.js",
     "React Native",
     "Node.js",
     "Express.js",
     "MongoDB",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Bootstrap",
     "JavaScript (ES6+)",
     "TypeScript",
-    "Tailwind CSS",
     "RESTful APIs",
     "Git & GitHub",
   ];
@@ -46,15 +49,15 @@ export default function AboutSection() {
           >
             <div className="space-y-4">
               <h3 className="text-2xl sm:text-3xl font-bold font-heading text-slate-800 dark:text-white">
-                Architecting Modern Web Solutions with the <span className="text-primary">MERN Stack</span>
+                Architecting Modern Full Stack Web & Mobile Solutions
               </h3>
               
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I am Hasnain Iqbal, a dedicated <strong>MERN Stack & React Native Developer</strong> focused on transforming complex requirements into reliable, responsive digital products. Currently working at <strong>Mcode Technology</strong> as a <strong>React & React Native Developer</strong> and building on professional internship experience at <strong>Senew Tech</strong>, I build applications with high performance, clean structure, and seamless usability.
+                I am Hasnain Iqbal, a dedicated <strong>Full Stack Developer</strong> focused on transforming complex requirements into reliable, high-performance digital products. Currently working as a <strong>Full Stack Developer</strong> at <strong>Metaviz</strong> (Full-Time) and as a <strong>Frontend & React Native Developer</strong> at <strong>Mcode Technology</strong> (Part-Time), while building upon foundational experience from <strong>Senew Tech</strong>.
               </p>
 
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I specialize in developing complete full-stack web solutions—from designing optimized MongoDB schemas and robust Node.js REST APIs with secure authentication, to crafting interactive, state-driven React interfaces with Tailwind CSS.
+                I engineer complete full-stack ecosystems—from designing scalable databases with <strong>MongoDB & PostgreSQL</strong> and building robust <strong>Node.js & Express.js</strong> REST APIs with secure authentication, to crafting lightning-fast, reactive user interfaces using <strong>React, Next.js, React Native, Tailwind CSS, and Bootstrap</strong>.
               </p>
             </div>
 
@@ -171,13 +174,13 @@ export default function AboutSection() {
               </div>
               <div className="flex-1">
                 <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
-                  Continuous Growth & Quality
+                  Full Stack Craftsmanship
                 </h4>
                 <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mt-0.5">
-                  Modern Clean Code Standards
+                  End-to-End Code Quality
                 </p>
                 <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
-                  Writing maintainable, well-documented code with an emphasis on performance and responsiveness.
+                  Writing scalable backend logic and elegant responsive frontends with best engineering practices.
                 </p>
               </div>
             </motion.div>
