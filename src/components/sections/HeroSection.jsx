@@ -18,8 +18,8 @@ export default function HeroSection() {
   };
 
   const stats = [
-    { label: "Hands-on Experience", value: "1+ Year" },
-    { label: "Completed Projects", value: "8+" },
+    { label: "Hands-on Experience", value: "2+ Years" },
+    { label: "Completed Projects", value: "12+" },
     { label: "Core Technologies", value: "10+" },
   ];
 
@@ -54,7 +54,7 @@ export default function HeroSection() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </span>
               <span className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
-                Full Stack Developer • Available for Opportunities
+                Full Stack Developer • Lahore, PK • Open to On-Site
               </span>
             </motion.div>
 
@@ -77,7 +77,7 @@ export default function HeroSection() {
 
             {/* Bio Paragraph */}
             <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
-              Passionate Full Stack Developer specializing in crafting robust web and cross-platform mobile applications. Skilled across frontend architectures (React, Next.js, React Native, Tailwind CSS, Bootstrap) and backend engineering (Node.js, Express, MongoDB, PostgreSQL, REST APIs & JWT Auth).
+              Full Stack Developer with 2+ years of hands-on experience architecting scalable web applications and cross-platform mobile solutions using React.js, Next.js, Node.js, and React Native. Proven track record engineering multi-tenant SaaS platforms, enterprise ERP systems, and e-commerce solutions with PostgreSQL and MongoDB.
             </p>
 
             {/* Call to Actions */}
