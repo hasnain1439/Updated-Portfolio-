@@ -10,6 +10,7 @@ export default function AboutSection() {
     "React.js",
     "Next.js",
     "React Native",
+    "Redux Toolkit & Saga",
     "Node.js",
     "Express.js",
     "MongoDB",
@@ -18,8 +19,9 @@ export default function AboutSection() {
     "Bootstrap",
     "JavaScript (ES6+)",
     "TypeScript",
+    "Prisma ORM",
     "RESTful APIs",
-    "Git & GitHub",
+    "Git, GitHub & GitLab",
   ];
 
   return (
@@ -53,11 +55,11 @@ export default function AboutSection() {
               </h3>
               
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I am Hasnain Iqbal, a dedicated <strong>Full Stack Developer</strong> focused on transforming complex requirements into reliable, high-performance digital products. Currently working as a <strong>Full Stack Developer</strong> at <strong>Metaviz</strong> (Full-Time) and as a <strong>Frontend & React Native Developer</strong> at <strong>Mcode Technology</strong> (Part-Time), while building upon foundational experience from <strong>Senew Tech</strong>.
+                I am Hasnain Iqbal, a dedicated <strong>Full Stack Developer</strong> focused on transforming complex requirements into reliable, high-performance digital products. With <strong>2+ years</strong> of hands-on experience, I currently work as a <strong>Full Stack Developer</strong> at <strong>Metaviz</strong> (Full-Time) and as a <strong>Front End & Mobile Developer</strong> at <strong>mCode Technology</strong> (Part-Time), building on prior experience at <strong>Senew Tech</strong> and <strong>StacksMind</strong>.
               </p>
 
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I engineer complete full-stack ecosystems—from designing scalable databases with <strong>MongoDB & PostgreSQL</strong> and building robust <strong>Node.js & Express.js</strong> REST APIs with secure authentication, to crafting lightning-fast, reactive user interfaces using <strong>React, Next.js, React Native, Tailwind CSS, and Bootstrap</strong>.
+                I have engineered <strong>multi-tenant SaaS platforms</strong>, <strong>enterprise ERP systems</strong>, and <strong>e-commerce solutions</strong>—from designing scalable databases with <strong>PostgreSQL & MongoDB</strong> and secure <strong>Node.js & Express.js</strong> REST APIs, to advanced state management with <strong>Redux Toolkit/Saga</strong> and translating complex Figma designs into responsive, production-ready interfaces with <strong>React, Next.js, and React Native</strong>.
               </p>
             </div>
 
@@ -126,14 +128,14 @@ export default function AboutSection() {
                     Bachelor's Degree
                   </h4>
                   <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                    Graduation 2026
+                    2022 – 2026
                   </span>
                 </div>
                 <p className="text-primary dark:text-primary-light font-medium text-sm mt-0.5">
-                  Computer Science (BSCS)
+                  BS Software Engineering
                 </p>
                 <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
-                  Focusing on Web Technologies, Software Architecture, and Distributed Systems.
+                  The Islamia University of Bahawalpur (Mar 2022 – Jan 2026). Intermediate in Computer Science from GC University Lahore (80%).
                 </p>
               </div>
             </motion.div>

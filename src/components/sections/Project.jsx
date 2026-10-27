@@ -14,6 +14,37 @@ import animals from "../../assets/projectsImg/animals.png";
 
 const projectsData = [
   {
+    id: 101,
+    category: "professional",
+    title: "Multi-Tenant Construction Management SaaS",
+    description: "Multi-tenant SaaS backend with Row-Level Security isolating each company's data, covering projects, procurement & stock, labour payroll, site cash and client billing — with a Next.js web app and an offline-first React Native (Expo) mobile app using encrypted SQLite and background sync.",
+    tech: ["Node.js", "Express", "TypeScript", "PostgreSQL", "Prisma", "Next.js", "Redux Toolkit", "React Native (Expo)", "SQLite", "Swagger"],
+    featured: true,
+  },
+  {
+    id: 102,
+    category: "professional",
+    title: "Multi-Tenant SaaS E-Commerce Platform",
+    description: "Enterprise-grade REST API with tenant resolution middleware for isolated storefronts and custom domains, coupon validation & per-user usage limits, transactional order processing, merchant analytics, Cloudinary uploads, JWT auth and Nodemailer password resets.",
+    tech: ["Node.js", "Express", "PostgreSQL", "Prisma", "JWT", "Zod", "Cloudinary", "Swagger UI"],
+    featured: true,
+  },
+  {
+    id: 103,
+    category: "professional",
+    title: "Multi-Brand Enterprise ERP Ecosystem",
+    description: "Scalable multi-brand ERP deployed across major chains like MEG Burger and Pizza Online — React.js web dashboard and React Native mobile app optimizing multi-tenant order and inventory workflows.",
+    tech: ["React.js", "React Native", "Redux Toolkit", "Redux Saga", "Axios", "Formik & Yup"],
+    featured: true,
+  },
+  {
+    id: 104,
+    category: "professional",
+    title: "Programming Bridge – Software & AI Agency",
+    description: "Official web presence for a software agency offering web, mobile, and AI development — modular reusable components, dark/light themes, lead-generation pipelines, and Node.js/Express endpoints for secure inquiry handling.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express"],
+  },
+  {
     id: 1,
     category: "fullstack",
     title: "LMS Platform",
@@ -113,6 +144,7 @@ export default function Projects() {
 
   const categories = [
     { id: "all", label: "All Projects" },
+    { id: "professional", label: "SaaS & Enterprise" },
     { id: "fullstack", label: "Full Stack & MERN" },
     { id: "react", label: "React Apps" },
     { id: "frontend", label: "Frontend & UI" },
@@ -174,13 +206,23 @@ export default function Projects() {
               >
                 {/* Image Container with Hover Actions */}
                 <div className="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-                  />
-                  
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-6 text-center bg-gradient-to-br from-primary/90 to-accent-purple/90 group-hover:scale-110 transition-transform duration-500 ease-out">
+                      <FiFolder className="text-white/90" size={40} />
+                      <span className="text-white font-bold font-heading text-lg leading-snug">
+                        {project.title}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Overlay on Hover */}
+                  {(project.liveLink || project.repoLink) && (
                   <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-xs">
                     <a
                       href={project.liveLink}
@@ -201,6 +243,7 @@ export default function Projects() {
                       <FiGithub size={20} />
                     </a>
                   </div>
+                  )}
 
                   {project.featured && (
                     <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold bg-primary text-white shadow-md">
@@ -232,6 +275,7 @@ export default function Projects() {
                   </div>
 
                   {/* Bottom Action Links */}
+                  {project.liveLink || project.repoLink ? (
                   <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 mt-auto">
                     <a
                       href={project.liveLink}
@@ -253,6 +297,11 @@ export default function Projects() {
                       <span>Code</span>
                     </a>
                   </div>
+                  ) : (
+                    <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 mt-auto text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      Professional / Client Project — Private Repository
+                    </div>
+                  )}
 
                 </div>
               </motion.div>

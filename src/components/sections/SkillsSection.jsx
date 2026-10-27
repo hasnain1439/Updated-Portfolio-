@@ -130,8 +130,8 @@ export default function SkillsSection() {
     {
       id: 10,
       category: "frontend",
-      skill: "Redux Toolkit",
-      description: "Managing predictable global state for large-scale applications with slices, custom hooks, and async thunks.",
+      skill: "Redux Toolkit & Saga",
+      description: "Managing predictable global state with Redux Toolkit slices and complex asynchronous side-effects with Redux Saga across web and mobile.",
       icon: SiRedux,
       iconColor: "text-purple-500",
       iconBg: "bg-purple-500/10",
@@ -160,8 +160,8 @@ export default function SkillsSection() {
     {
       id: 13,
       category: "tools",
-      skill: "Git & GitHub",
-      description: "Feature branch workflows, pull requests, merge conflict resolution, CI/CD hooks, and repository management.",
+      skill: "Git, GitHub & GitLab",
+      description: "Feature branch workflows, pull requests and merge requests, merge conflict resolution, and repository management.",
       icon: FaGitAlt,
       iconColor: "text-orange-500",
       iconBg: "bg-orange-500/10",
@@ -185,14 +185,19 @@ export default function SkillsSection() {
       : allSkills.filter((s) => s.category === activeCategory);
 
   const additionalTags = [
-    { name: "Next.js App Router", icon: SiNextdotjs },
+    { name: "Next.js SSR & SSG", icon: SiNextdotjs },
     { name: "PostgreSQL & SQL", icon: SiPostgresql },
-    { name: "Bootstrap 5", icon: FaBootstrap },
-    { name: "Tailwind CSS", icon: SiTailwindcss },
+    { name: "Prisma ORM", icon: FaDatabase },
     { name: "Mongoose & NoSQL", icon: SiMongodb },
+    { name: "Axios", icon: FaServer },
+    { name: "Formik & Yup", icon: FaJs },
+    { name: "Zod Validation", icon: SiTypescript },
     { name: "JWT Authentication", icon: FaServer },
+    { name: "Swagger / OpenAPI", icon: FaServer },
+    { name: "Context API", icon: FaReact },
+    { name: "Reactstrap & Bootstrap 5", icon: FaBootstrap },
+    { name: "BigCommerce", icon: FaDatabase },
     { name: "GitHub Collaboration", icon: FaGithub },
-    { name: "RESTful Endpoints", icon: FaDatabase },
   ];
 
   return (
