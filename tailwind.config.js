@@ -8,32 +8,28 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-        heading: ['Outfit', 'sans-serif'],
+        sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {
         primary: {
-          DEFAULT: '#3B82F6', // Vibrant Blue
+          DEFAULT: '#2563EB', // Brand blue (cobalt)
           dark: '#1D4ED8',
           light: '#60A5FA',
-          glow: 'rgba(59, 130, 246, 0.4)',
         },
         secondary: {
-          DEFAULT: '#10B981', // Emerald Green
+          DEFAULT: '#059669', // Emerald, status only
           dark: '#047857',
           light: '#34D399',
         },
-        accent: {
-          purple: '#8B5CF6',
-          cyan: '#06B6D4',
-        },
         dark: {
-          DEFAULT: '#0B0F19', // Very deep slate/navy
-          card: '#111827',
-          cardBorder: '#1F2937',
-          lighter: '#1E293B',
-          text: '#F8FAFC',
-          muted: '#94A3B8',
+          DEFAULT: '#0A0A0A', // Near-black, neutral
+          card: '#141414',
+          cardBorder: '#262626',
+          lighter: '#1F1F1F',
+          text: '#FAFAFA',
+          muted: '#A3A3A3',
         },
         light: {
           DEFAULT: '#FFFFFF',
@@ -43,11 +39,6 @@ export default {
           text: '#0F172A',
           muted: '#64748B',
         }
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)',
-        'card-glow': 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',

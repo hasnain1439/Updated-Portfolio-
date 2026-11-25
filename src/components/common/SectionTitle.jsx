@@ -1,21 +1,22 @@
 import React from "react";
 
-export default function SectionTitle({ title, subtitle, center = true }) {
+// Left-aligned editorial heading: mono eyebrow, large tight title, optional lead text.
+export default function SectionTitle({ title, subtitle, description, center = false }) {
   return (
-    <div className={`flex flex-col ${center ? "items-center text-center" : "items-start text-left"} mb-12`}>
+    <div className={`flex flex-col ${center ? "items-center text-center" : "items-start text-left"} mb-12 max-w-3xl ${center ? "mx-auto" : ""}`}>
       {subtitle && (
-        <span className="px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary dark:text-primary-light border border-primary/20 mb-3 inline-block">
+        <span className="font-mono text-xs uppercase tracking-[0.15em] text-primary dark:text-neutral-400 mb-4">
           {subtitle}
         </span>
       )}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-slate-900 dark:text-white tracking-tight">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold font-heading text-slate-900 dark:text-white tracking-tight leading-[1.1]">
         {title}
       </h2>
-      <div className="flex items-center gap-2 mt-4">
-        <span className="w-12 h-1 bg-gradient-to-r from-primary to-accent-purple rounded-full"></span>
-        <span className="w-2 h-1 bg-primary/60 rounded-full"></span>
-        <span className="w-1 h-1 bg-primary/30 rounded-full"></span>
-      </div>
+      {description && (
+        <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-neutral-400 leading-relaxed">
+          {description}
+        </p>
+      )}
     </div>
   );
 }

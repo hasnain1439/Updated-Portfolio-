@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .tile { fill: #171717; }
+    .glyph { fill: #FFFFFF; }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #FFFFFF; }
+      .glyph { fill: #171717; }
+    }
+  </style>
+  <rect class="tile" width="64" height="64" rx="15"/>
+  <rect class="glyph" x="13" y="17" width="7" height="30" rx="2"/>
+  <rect class="glyph" x="31" y="17" width="7" height="30" rx="2"/>
+  <rect class="glyph" x="13" y="29" width="25" height="6" rx="1"/>
+  <rect class="glyph" x="44" y="28" width="7" height="19" rx="2"/>
+  <circle cx="47.5" cy="20.5" r="4" fill="#10B981"/>
+</svg>

@@ -43,8 +43,8 @@ export default function SkillsSection() {
       skill: "React.js",
       description: "Developing modular, component-driven user interfaces with modern hooks, context, and state architectures.",
       icon: FaReact,
-      iconColor: "text-cyan-500",
-      iconBg: "bg-cyan-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Advanced",
     },
     {
@@ -53,8 +53,8 @@ export default function SkillsSection() {
       skill: "Next.js",
       description: "Building production-grade SSR & SSG full-stack web applications with App Router, server actions, and SEO optimization.",
       icon: SiNextdotjs,
-      iconColor: "text-slate-900 dark:text-white",
-      iconBg: "bg-slate-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -63,8 +63,8 @@ export default function SkillsSection() {
       skill: "React Native",
       description: "Crafting cross-platform native mobile applications for iOS & Android with custom native components and navigation.",
       icon: FaReact,
-      iconColor: "text-sky-400",
-      iconBg: "bg-sky-400/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -73,8 +73,8 @@ export default function SkillsSection() {
       skill: "Node.js",
       description: "Building scalable backend services, asynchronous event-driven architectures, and high-throughput RESTful APIs.",
       icon: FaNodeJs,
-      iconColor: "text-emerald-500",
-      iconBg: "bg-emerald-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Advanced",
     },
     {
@@ -83,8 +83,8 @@ export default function SkillsSection() {
       skill: "Express.js",
       description: "Architecting modular API endpoints, middleware pipelines, JWT auth, request validation, and error handlers.",
       icon: SiExpress,
-      iconColor: "text-slate-800 dark:text-slate-200",
-      iconBg: "bg-slate-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Advanced",
     },
     {
@@ -93,8 +93,8 @@ export default function SkillsSection() {
       skill: "PostgreSQL",
       description: "Designing relational database schemas, structured data models, complex queries, indexing, and connection pools.",
       icon: SiPostgresql,
-      iconColor: "text-blue-500",
-      iconBg: "bg-blue-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -103,8 +103,8 @@ export default function SkillsSection() {
       skill: "MongoDB",
       description: "Designing flexible NoSQL database schemas, CRUD operations, indexing, and Mongoose ODM modeling.",
       icon: SiMongodb,
-      iconColor: "text-emerald-600",
-      iconBg: "bg-emerald-600/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -113,8 +113,8 @@ export default function SkillsSection() {
       skill: "Tailwind CSS",
       description: "Crafting modern, bespoke responsive layouts with utility-first CSS, custom design tokens, and fluid animations.",
       icon: SiTailwindcss,
-      iconColor: "text-cyan-400",
-      iconBg: "bg-cyan-400/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Advanced",
     },
     {
@@ -123,8 +123,8 @@ export default function SkillsSection() {
       skill: "Bootstrap",
       description: "Developing rapid responsive grid systems, accessible UI components, and clean mobile-first web layouts.",
       icon: SiBootstrap,
-      iconColor: "text-purple-600",
-      iconBg: "bg-purple-600/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -133,8 +133,8 @@ export default function SkillsSection() {
       skill: "Redux Toolkit & Saga",
       description: "Managing predictable global state with Redux Toolkit slices and complex asynchronous side-effects with Redux Saga across web and mobile.",
       icon: SiRedux,
-      iconColor: "text-purple-500",
-      iconBg: "bg-purple-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -143,8 +143,8 @@ export default function SkillsSection() {
       skill: "JavaScript (ES6+) & TS",
       description: "Deep mastery of asynchronous JS, async/await, closures, interfaces, types, and modern language paradigms.",
       icon: FaJs,
-      iconColor: "text-amber-400",
-      iconBg: "bg-amber-400/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Advanced",
     },
     {
@@ -153,8 +153,8 @@ export default function SkillsSection() {
       skill: "REST APIs & JWT Auth",
       description: "Creating secure RESTful API architectures with JSON Web Tokens, role-based access control, and payload security.",
       icon: FaServer,
-      iconColor: "text-indigo-500",
-      iconBg: "bg-indigo-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Advanced",
     },
     {
@@ -163,8 +163,8 @@ export default function SkillsSection() {
       skill: "Git, GitHub & GitLab",
       description: "Feature branch workflows, pull requests and merge requests, merge conflict resolution, and repository management.",
       icon: FaGitAlt,
-      iconColor: "text-orange-500",
-      iconBg: "bg-orange-500/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
     {
@@ -173,11 +173,13 @@ export default function SkillsSection() {
       skill: "Postman & API Testing",
       description: "Comprehensive endpoint testing, automated request collections, environment variables, and authentication simulations.",
       icon: SiPostman,
-      iconColor: "text-orange-600",
-      iconBg: "bg-orange-600/10",
+      iconColor: "text-primary dark:text-white",
+      iconBg: "bg-primary/10 dark:bg-white/5",
       level: "Proficient",
     },
   ];
+
+  const categoryLabel = { frontend: "Frontend", backend: "Backend", tools: "Tooling" };
 
   const filteredSkills =
     activeCategory === "all"
@@ -197,34 +199,34 @@ export default function SkillsSection() {
     { name: "Context API", icon: FaReact },
     { name: "Reactstrap & Bootstrap 5", icon: FaBootstrap },
     { name: "BigCommerce", icon: FaDatabase },
+    { name: "Electron (Desktop Apps)", icon: FaReact },
+    { name: "Nodemailer & IMAP", icon: FaServer },
     { name: "GitHub Collaboration", icon: FaGithub },
   ];
 
   return (
     <section className="py-20 md:py-28 bg-light-bg dark:bg-dark relative overflow-hidden transition-colors" id="skills">
-      {/* Glow Orbs */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <SectionTitle subtitle="My Expertise" title="Technical Skills & Proficiencies" />
+          <SectionTitle subtitle="Skills" title="Technical Skills & Proficiencies" description="The tools I reach for to take a product from schema to screen." />
         </motion.div>
 
         {/* Category Tabs Filter */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center gap-2 mb-10">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer border ${
                 activeCategory === cat.id
-                  ? "bg-primary text-white shadow-lg shadow-primary/25 scale-105"
-                  : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-primary/40 hover:text-primary dark:hover:text-white"
+                  ? "bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-neutral-900 dark:border-white"
+                  : "bg-transparent text-slate-600 dark:text-neutral-400 border-slate-200 dark:border-neutral-800 hover:border-slate-400 dark:hover:border-neutral-600 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               {cat.label}
@@ -235,25 +237,23 @@ export default function SkillsSection() {
         {/* Skills Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l border-t border-slate-200 dark:border-neutral-800"
         >
           <AnimatePresence>
             {filteredSkills.map((item) => (
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
               >
                 <SkillCard
                   skill={item.skill}
                   description={item.description}
                   icon={item.icon}
-                  iconColor={item.iconColor}
-                  iconBg={item.iconBg}
-                  level={item.level}
+                  category={categoryLabel[item.category]}
                 />
               </motion.div>
             ))}
@@ -261,20 +261,19 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Additional Tools Section */}
-        <div className="mt-16 text-center">
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider mb-6">
+        <div className="mt-14">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-slate-500 dark:text-neutral-400 mb-5">
             Complementary Tools & Libraries
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto">
+          <div className="flex flex-wrap items-center gap-2">
             {additionalTags.map((tag, idx) => (
-              <motion.div
+              <span
                 key={idx}
-                whileHover={{ y: -3, scale: 1.05 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium shadow-sm hover:border-primary/50 hover:text-primary dark:hover:text-primary-light transition-all cursor-default"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-slate-200 dark:border-neutral-800 text-slate-700 dark:text-neutral-300 text-[13px] hover:border-slate-400 dark:hover:border-neutral-600 transition-colors"
               >
-                <tag.icon className="text-primary text-base" />
-                <span>{tag.name}</span>
-              </motion.div>
+                <tag.icon className="text-slate-400 dark:text-neutral-500 text-sm" />
+                {tag.name}
+              </span>
             ))}
           </div>
         </div>

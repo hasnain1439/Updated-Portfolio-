@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://updated-portfolio-nine-roan.vercel.app/sitemap.xml

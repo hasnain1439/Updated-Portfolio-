@@ -1,194 +1,121 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaUserGraduate, FaAward, FaDownload, FaCode, FaRocket } from "react-icons/fa";
-import { FiExternalLink, FiSend } from "react-icons/fi";
+import { FaUserGraduate, FaAward, FaRocket } from "react-icons/fa";
+import { FiDownload, FiSend } from "react-icons/fi";
 import SectionTitle from "../common/SectionTitle";
-import resume from "../../assets/Doc/resume.pdf";
+import profileImg from "../../assets/profile.webp";
+
+const resume = "/resume.pdf";
+
+const highlights = [
+  {
+    icon: FaUserGraduate,
+    title: "BS Software Engineering",
+    meta: "2022 – 2026",
+    text: "The Islamia University of Bahawalpur. Intermediate in Computer Science, GC University Lahore (80%).",
+  },
+  {
+    icon: FaAward,
+    title: "CGPA 3.43 / 4.0",
+    meta: "Academics",
+    text: "Strong grounding in data structures, object-oriented programming and database management.",
+  },
+  {
+    icon: FaRocket,
+    title: "End-to-end ownership",
+    meta: "How I work",
+    text: "From schema design and secure APIs to responsive interfaces — I ship the whole feature.",
+  },
+];
+
+const reveal = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
 
 export default function AboutSection() {
-  const techStack = [
-    "React.js",
-    "Next.js",
-    "React Native",
-    "Redux Toolkit & Saga",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "PostgreSQL",
-    "Tailwind CSS",
-    "Bootstrap",
-    "JavaScript (ES6+)",
-    "TypeScript",
-    "Prisma ORM",
-    "RESTful APIs",
-    "Git, GitHub & GitLab",
-  ];
-
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-[#0E1322] transition-colors relative overflow-hidden" id="about">
-      {/* Background Subtle Gradient */}
-      <div className="absolute -top-40 right-0 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-
+    <section className="py-20 md:py-28 bg-white dark:bg-[#111111] transition-colors" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <SectionTitle subtitle="About Me" title="Passion for Code & Problem Solving" />
+        <motion.div {...reveal}>
+          <SectionTitle subtitle="About" title="Turning complex requirements into reliable products." />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
-          
-          {/* Left Column: Narrative & Stack */}
-          <motion.div
-            className="lg:col-span-7 space-y-6"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 lg:items-stretch">
+          {/* Photo */}
+          {/* Photo card: stretches to the full height of the text column */}
+          <motion.figure
+            {...reveal}
+            className="lg:col-span-4 max-w-sm lg:max-w-none w-full flex flex-col rounded-xl overflow-hidden border border-slate-200 dark:border-neutral-800 bg-slate-100 dark:bg-neutral-900"
           >
-            <div className="space-y-4">
-              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-slate-800 dark:text-white">
-                Architecting Modern Full Stack Web & Mobile Solutions
-              </h3>
-              
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I am Hasnain Iqbal, a dedicated <strong>Full Stack Developer</strong> focused on transforming complex requirements into reliable, high-performance digital products. With <strong>2+ years</strong> of hands-on experience, I currently work as a <strong>Full Stack Developer</strong> at <strong>Metaviz</strong> (Full-Time) and as a <strong>Front End & Mobile Developer</strong> at <strong>mCode Technology</strong> (Part-Time), building on prior experience at <strong>Senew Tech</strong> and <strong>StacksMind</strong>.
-              </p>
-
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base sm:text-lg">
-                I have engineered <strong>multi-tenant SaaS platforms</strong>, <strong>enterprise ERP systems</strong>, and <strong>e-commerce solutions</strong>—from designing scalable databases with <strong>PostgreSQL & MongoDB</strong> and secure <strong>Node.js & Express.js</strong> REST APIs, to advanced state management with <strong>Redux Toolkit/Saga</strong> and translating complex Figma designs into responsive, production-ready interfaces with <strong>React, Next.js, and React Native</strong>.
-              </p>
+            <div className="aspect-[4/5] lg:aspect-auto lg:flex-1 lg:min-h-[400px]">
+              <img
+                src={profileImg}
+                alt="Hasnain Iqbal, Full Stack Developer"
+                width="900"
+                height="806"
+                loading="lazy"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
+            <figcaption className="flex items-center justify-between px-4 py-3 border-t border-slate-200 dark:border-neutral-800 bg-white dark:bg-[#111111] font-mono text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-neutral-400">
+              <span>Hasnain Iqbal</span>
+              <span>Lahore · UTC+5</span>
+            </figcaption>
+          </motion.figure>
 
-            {/* Tech Stack Badges */}
-            <div className="pt-2">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
-                Core Technologies & Tools
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {techStack.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-medium text-xs sm:text-sm border border-slate-200 dark:border-slate-700 hover:border-primary/50 hover:text-primary dark:hover:text-primary-light transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* Narrative */}
+          <motion.div {...reveal} transition={{ ...reveal.transition, delay: 0.1 }} className="lg:col-span-8 space-y-5">
+            <p className="text-slate-700 dark:text-neutral-300 leading-relaxed text-lg sm:text-xl">
+              I'm a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer</strong> with 2+ years of
+              hands-on experience. I currently work full-time at <strong className="text-slate-900 dark:text-white font-semibold">Metaviz</strong> and
+              part-time at <strong className="text-slate-900 dark:text-white font-semibold">mCode Technology</strong>, building on earlier roles at
+              Senew Tech and StacksMind.
+            </p>
+            <p className="text-slate-600 dark:text-neutral-400 leading-relaxed text-base sm:text-lg">
+              I've engineered multi-tenant SaaS platforms, enterprise ERP systems and e-commerce solutions — designing
+              databases on PostgreSQL and MongoDB, building secure Node.js and Express APIs, managing complex state with
+              Redux Toolkit and Saga, and turning Figma designs into production-ready interfaces with React, Next.js and
+              React Native.
+            </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <motion.a
+            <div className="flex flex-wrap gap-3 pt-3">
+              <a
                 href={resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-primary/25 transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 bg-neutral-900 hover:bg-neutral-700 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-900 px-5 py-3 rounded-lg text-sm font-semibold transition-colors"
               >
-                <FaDownload size={15} />
-                <span>Download Resume</span>
-              </motion.a>
-
-              <motion.a
+                <FiDownload size={15} />
+                Download resume
+              </a>
+              <a
                 href="#contact"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-3.5 rounded-xl font-semibold border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 text-slate-800 dark:text-neutral-200 px-5 py-3 rounded-lg text-sm font-semibold border border-slate-300 dark:border-neutral-700 hover:border-slate-900 dark:hover:border-neutral-400 transition-colors"
               >
                 <FiSend size={15} />
-                <span>Contact Me</span>
-              </motion.a>
+                Get in touch
+              </a>
+            </div>
+
+            {/* Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-200 dark:bg-neutral-800 rounded-xl overflow-hidden border border-slate-200 dark:border-neutral-800 !mt-10">
+              {highlights.map((h) => (
+                <div key={h.title} className="bg-white dark:bg-[#111111] p-5">
+                  <div className="flex items-center justify-between">
+                    <h.icon className="text-primary dark:text-white" />
+                    <span className="font-mono text-xs uppercase tracking-[0.12em] text-slate-500 dark:text-neutral-400">
+                      {h.meta}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-slate-900 dark:text-white">{h.title}</h3>
+                  <p className="mt-1.5 text-sm text-slate-600 dark:text-neutral-400 leading-relaxed">{h.text}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
-
-          {/* Right Column: Experience Cards & Academic Credentials */}
-          <motion.div
-            className="lg:col-span-5 flex flex-col gap-5"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            {/* Card 1: Education */}
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary dark:text-primary-light flex items-center justify-center shrink-0 text-xl shadow-inner">
-                <FaUserGraduate />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
-                    Bachelor's Degree
-                  </h4>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                    2022 – 2026
-                  </span>
-                </div>
-                <p className="text-primary dark:text-primary-light font-medium text-sm mt-0.5">
-                  BS Software Engineering
-                </p>
-                <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
-                  The Islamia University of Bahawalpur (Mar 2022 – Jan 2026). Intermediate in Computer Science from GC University Lahore (80%).
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 2: Academic Performance */}
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary dark:text-secondary-light flex items-center justify-center shrink-0 text-xl shadow-inner">
-                <FaAward />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
-                    Academic Standing
-                  </h4>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
-                    CGPA 3.43 / 4.0
-                  </span>
-                </div>
-                <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mt-0.5">
-                  Consistently Strong Performance
-                </p>
-                <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
-                  Strong grasp of Data Structures, Object Oriented Programming, and Database Management.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 3: Engineering Philosophy */}
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex items-start gap-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-accent-purple/10 text-accent-purple flex items-center justify-center shrink-0 text-xl shadow-inner">
-                <FaRocket />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-lg font-bold font-heading text-slate-800 dark:text-white">
-                  Full Stack Craftsmanship
-                </h4>
-                <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mt-0.5">
-                  End-to-End Code Quality
-                </p>
-                <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
-                  Writing scalable backend logic and elegant responsive frontends with best engineering practices.
-                </p>
-              </div>
-            </motion.div>
-
-          </motion.div>
-
         </div>
       </div>
     </section>
