@@ -1,27 +1,69 @@
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%233B82F6'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='50'>H</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
     <title>Hasnain Iqbal | Full Stack Developer (React, Next.js, Node.js, PostgreSQL)</title>
     <meta name="title" content="Hasnain Iqbal | Full Stack Developer Portfolio" />
     <meta name="description" content="Dedicated Full Stack Developer building modern, scalable web and mobile applications with React, Next.js, React Native, Node.js, Express, MongoDB, and PostgreSQL." />
-    <meta name="keywords" content="Hasnain Iqbal, Full Stack Developer, React Developer, Next.js, Node.js, Express.js, PostgreSQL, MongoDB, React Native, Tailwind CSS, Bootstrap, Web Developer Portfolio" />
     <meta name="author" content="Hasnain Iqbal" />
-    <meta name="theme-color" content="#0B0F19" />
+    <meta name="theme-color" content="#FFFFFF" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (LinkedIn, WhatsApp, Facebook previews) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Hasnain Iqbal" />
     <meta property="og:title" content="Hasnain Iqbal | Full Stack Developer Portfolio" />
-    <meta property="og:description" content="Dedicated Full Stack Developer building modern, scalable web and mobile applications. Check out my latest work, projects, and skills." />
+    <meta property="og:description" content="Full Stack Developer building scalable web and mobile applications with React, Next.js, React Native, Node.js, PostgreSQL and MongoDB." />
+    <meta property="og:url" content="https://updated-portfolio-nine-roan.vercel.app/" />
+    <meta property="og:image" content="https://updated-portfolio-nine-roan.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hasnain Iqbal, Full Stack Developer" />
+    <link rel="canonical" href="https://updated-portfolio-nine-roan.vercel.app/" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hasnain Iqbal | Full Stack Developer Portfolio" />
+    <meta name="twitter:description" content="Full Stack Developer building scalable web and mobile applications with React, Next.js, React Native and Node.js." />
+    <meta name="twitter:image" content="https://updated-portfolio-nine-roan.vercel.app/og-image.jpg" />
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hasnain Iqbal",
+        "jobTitle": "Full Stack Developer",
+        "url": "https://updated-portfolio-nine-roan.vercel.app/",
+        "address": { "@type": "PostalAddress", "addressLocality": "Lahore", "addressCountry": "PK" },
+        "alumniOf": "The Islamia University of Bahawalpur",
+        "knowsAbout": ["React", "Next.js", "React Native", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "TypeScript"],
+        "sameAs": [
+          "https://github.com/hasnain1439",
+          "https://www.linkedin.com/in/hasnain-iqbal-73043326a"
+        ]
+      }
+    </script>
+
+    <!-- Apply saved theme before first paint (prevents dark/light flash) -->
+    <script>
+      try {
+        if (localStorage.getItem("portfolio-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   </head>
   <body class="bg-light-bg dark:bg-dark text-light-text dark:text-dark-text transition-colors duration-300 antialiased selection:bg-primary selection:text-white">
     <div id="root"></div>

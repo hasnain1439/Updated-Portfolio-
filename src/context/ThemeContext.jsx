@@ -9,8 +9,8 @@ export function ThemeProvider({ children }) {
     if (savedTheme) {
       return savedTheme;
     }
-    // Default to dark mode for a modern developer aesthetic
-    return "dark";
+    // Default to light mode; a saved choice (above) still wins
+    return "light";
   });
 
   useEffect(() => {
@@ -34,6 +34,7 @@ export function ThemeProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {
