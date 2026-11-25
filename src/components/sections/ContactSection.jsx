@@ -4,6 +4,7 @@ import { FiMail, FiMapPin, FiSend, FiCheck, FiCopy, FiAlertCircle, FiArrowUpRigh
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import SectionTitle from "../common/SectionTitle";
+import { EMAIL, gmailComposeUrl, openGmailCompose } from "../../utils/email";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -16,7 +17,7 @@ export default function ContactSection() {
   const [status, setStatus] = useState({ type: "", message: "" }); // 'success', 'error', 'info', ''
   const [submitting, setSubmitting] = useState(false);
 
-  const emailAddress = "hasnainiqbal7860a@gmail.com";
+  const emailAddress = EMAIL;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
@@ -105,18 +106,15 @@ export default function ContactSection() {
         }
       }
 
-      // 3. Fallback: If no API keys set in .env yet, trigger mailto client & inform user
-      const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
-        formData.subject || "Portfolio Inquiry from " + formData.name
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      
-      window.location.href = mailtoUrl;
+      // 3. Fallback: no form service configured -> open Gmail compose, prefilled
+      openGmailCompose({
+        subject: formData.subject || "Portfolio Inquiry from " + formData.name,
+        body: `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+      });
 
       setStatus({
         type: "info",
-        message: "Opening your email app so you can send the message directly.",
+        message: "Gmail opened in a new tab with your message filled in — just press Send.",
       });
       setSubmitting(false);
 
@@ -125,15 +123,13 @@ export default function ContactSection() {
       // Fallback on error
       setStatus({
         type: "error",
-        message: "Something went wrong while sending. Opening your email app instead...",
+        message: "Something went wrong while sending. Opening Gmail with your message instead...",
       });
 
-      const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
-        formData.subject || "Portfolio Inquiry from " + formData.name
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      window.location.href = mailtoUrl;
+      openGmailCompose({
+        subject: formData.subject || "Portfolio Inquiry from " + formData.name,
+        body: `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+      });
       setSubmitting(false);
     }
   };
@@ -143,7 +139,7 @@ export default function ContactSection() {
       icon: FiMail,
       label: "Email",
       value: emailAddress,
-      href: `mailto:${emailAddress}`,
+      href: gmailComposeUrl(),
       copy: true,
     },
     {

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function IconWrapper({ iconName: Icon, link, tooltip, label }) {
   const isLink = Boolean(link);
-  const isMail = isLink && (link.startsWith("mailto:") || link.includes("mail.google.com"));
+  const isMail = isLink && link.startsWith("mailto:");
 
   const linkProps = isLink
     ? {

@@ -6,6 +6,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { FiArrowUpRight, FiDownload } from "react-icons/fi";
 import IconWrapper from "../common/IconWrapper";
 import Terminal from "../common/Terminal";
+import { gmailComposeUrl } from "../../utils/email";
 
 const resume = "/resume.pdf";
 
@@ -90,7 +91,7 @@ export default function HeroSection() {
               <div className="flex items-center gap-2 sm:ml-2">
                 <IconWrapper iconName={LuGithub} link="https://github.com/hasnain1439" tooltip="GitHub" label="GitHub" />
                 <IconWrapper iconName={FaLinkedinIn} link="https://www.linkedin.com/in/hasnain-iqbal-73043326a" tooltip="LinkedIn" label="LinkedIn" />
-                <IconWrapper iconName={MdOutlineMailOutline} link="mailto:hasnainiqbal7860a@gmail.com" tooltip="Email" label="Email" />
+                <IconWrapper iconName={MdOutlineMailOutline} link={gmailComposeUrl()} tooltip="Email" label="Email" />
                 <IconWrapper iconName={FaWhatsapp} link="https://wa.me/923204698158" tooltip="WhatsApp" label="WhatsApp" />
               </div>
             </motion.div>
