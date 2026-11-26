@@ -4,6 +4,7 @@ import { FiMail, FiMapPin, FiSend, FiCheck, FiCopy, FiAlertCircle, FiArrowUpRigh
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import SectionTitle from "../common/SectionTitle";
+import { EMAIL, WEB3FORMS_ACCESS_KEY, gmailComposeUrl } from "../../utils/email";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -16,7 +17,7 @@ export default function ContactSection() {
   const [status, setStatus] = useState({ type: "", message: "" }); // 'success', 'error', 'info', ''
   const [submitting, setSubmitting] = useState(false);
 
-  const emailAddress = "hasnainiqbal7860a@gmail.com";
+  const emailAddress = EMAIL;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
@@ -31,15 +32,26 @@ export default function ContactSection() {
     }
   };
 
+  // Prefilled Gmail draft, offered as a manual fallback if sending fails.
+  const gmailFallbackUrl = () =>
+    gmailComposeUrl({
+      subject: formData.subject || "Portfolio Inquiry from " + formData.name,
+      body: `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+    });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Honeypot: real users never see or fill this field; bots usually do.
+    if (e.target.elements.botcheck?.checked) return;
+
     setSubmitting(true);
     setStatus({ type: "", message: "" });
 
     const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-    const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY;
 
     try {
       // 1. Try EmailJS if configured
@@ -105,35 +117,44 @@ export default function ContactSection() {
         }
       }
 
-      // 3. Fallback: If no API keys set in .env yet, trigger mailto client & inform user
-      const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
-        formData.subject || "Portfolio Inquiry from " + formData.name
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      
-      window.location.href = mailtoUrl;
-
-      setStatus({
-        type: "info",
-        message: "Opening your email app so you can send the message directly.",
+      // 3. Default: FormSubmit (no API key needed). Delivers straight to the inbox.
+      //    The very first submission triggers a one-time "Activate Form" email.
+      const response = await fetch(`https://formsubmit.co/ajax/${emailAddress}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "(no subject)",
+          message: formData.message,
+          _subject: `Portfolio: ${formData.subject || "New message from " + formData.name}`,
+          _replyto: formData.email,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
-      setSubmitting(false);
 
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && String(data.success) === "true") {
+        setStatus({
+          type: "success",
+          message: "Thanks! Your message has been sent — I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setSubmitting(false);
+        return;
+      }
+      throw new Error(data.message || `Form service responded with ${response.status}`);
     } catch (err) {
       console.error("Email send error:", err);
-      // Fallback on error
       setStatus({
         type: "error",
-        message: "Something went wrong while sending. Opening your email app instead...",
+        message: "Sorry, the message couldn't be sent right now.",
+        fallback: gmailFallbackUrl(),
       });
-
-      const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
-        formData.subject || "Portfolio Inquiry from " + formData.name
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      window.location.href = mailtoUrl;
       setSubmitting(false);
     }
   };
@@ -143,7 +164,7 @@ export default function ContactSection() {
       icon: FiMail,
       label: "Email",
       value: emailAddress,
-      href: `mailto:${emailAddress}`,
+      href: gmailComposeUrl(),
       copy: true,
     },
     {
@@ -258,6 +279,9 @@ export default function ContactSection() {
               onSubmit={handleSubmit}
               className="rounded-xl border border-slate-200 dark:border-neutral-800 bg-slate-50/60 dark:bg-neutral-900/40 p-6 sm:p-8 space-y-5"
             >
+              {/* Honeypot (hidden from people and screen readers) */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+
               <div>
                 <h3 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">Send a message</h3>
                 <p className="mt-1 text-sm text-slate-600 dark:text-neutral-400">
@@ -378,7 +402,22 @@ export default function ContactSection() {
                     ) : (
                       <FiAlertCircle className="shrink-0 mt-0.5" size={16} />
                     )}
-                    <span>{status.message}</span>
+                    <span>
+                      {status.message}
+                      {status.fallback && (
+                        <>
+                          {" "}
+                          <a
+                            href={status.fallback}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold underline underline-offset-4"
+                          >
+                            Send via Gmail instead ↗
+                          </a>
+                        </>
+                      )}
+                    </span>
                   </motion.div>
                 )}
               </AnimatePresence>

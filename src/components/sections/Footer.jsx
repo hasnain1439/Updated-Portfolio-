@@ -6,6 +6,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { FiArrowUp } from "react-icons/fi";
 import IconWrapper from "../common/IconWrapper";
 import Logo from "../common/Logo";
+import { gmailComposeUrl } from "../../utils/email";
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -100,7 +101,7 @@ export default function Footer() {
               />
               <IconWrapper
                 iconName={MdOutlineMailOutline}
-                link="mailto:hasnainiqbal7860a@gmail.com"
+                link={gmailComposeUrl()}
                 tooltip="Email"
                 label="Email"
               />
