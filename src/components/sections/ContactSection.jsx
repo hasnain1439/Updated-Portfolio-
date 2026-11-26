@@ -4,7 +4,7 @@ import { FiMail, FiMapPin, FiSend, FiCheck, FiCopy, FiAlertCircle, FiArrowUpRigh
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import SectionTitle from "../common/SectionTitle";
-import { EMAIL, gmailComposeUrl } from "../../utils/email";
+import { EMAIL, WEB3FORMS_ACCESS_KEY, gmailComposeUrl } from "../../utils/email";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -51,7 +51,7 @@ export default function ContactSection() {
     const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-    const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const web3formsKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY;
 
     try {
       // 1. Try EmailJS if configured

@@ -1,5 +1,9 @@
 export const EMAIL = "hasnainiqbal7860a@gmail.com";
 
+// Web3Forms access key. Public by design (Web3Forms documents it as safe for
+// client-side code); VITE_WEB3FORMS_ACCESS_KEY overrides it when set.
+export const WEB3FORMS_ACCESS_KEY = "ec58de0b-4d7e-4213-83d0-09460cf73870";
+
 // Gmail web compose window with the "To" field prefilled.
 // Works without a desktop mail app (mailto: links do nothing on many PCs).
 export function gmailComposeUrl({ subject = "", body = "" } = {}) {
